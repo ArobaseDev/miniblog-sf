@@ -1,15 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tech My Blog{% endblock %}
+{% block title %}Hello ArticleController!{% endblock %}
 
 {% block body %}
+{{include('components/_partials/header.html.twig')}}
 
-{%include('components/_partials/header.html.twig')%}
 <div class="example-wrapper">
+           
     <main class="max-w-screen-lg mx-auto py-5 md:py-16 px-4">
-
-  		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-			{% for item in lastArticles %}
+ <ul class="flex gap-2 text-violet-950 mb-4 text-sm">
+                <li class="after:content-['>']">
+                    <a href="{{ path('app_home') }}">Home</a>
+                </li>
+  
+                <li class="text-violet-600">
+                    Tous les articles
+                </li>
+            </ul>
+  		<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+			{% for item in articles %}
 				<div class="shadow-lg rounded-md p-4 md:p-6 mb-4 flex flex-col border relative">
 					{% if item.isPremium %}
 						<div class="absolute bottom-0 right-0 bg-yellow-100 rounded-bl-md rounded-tr-md py-1 px-2 text-sm flex items-center gap-2">
@@ -26,7 +35,9 @@
 				</div>
 			{% endfor %}
 		</div>
-  {{ include('components/cta-articles-show-all.html.twig') }}
+        </main>
+
+
+ {{dump(articles)}}
 </div>
-</main>
 {% endblock %}

@@ -40,4 +40,14 @@ class ArticleRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findLatestSix(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.createdAt', 'DESC') 
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

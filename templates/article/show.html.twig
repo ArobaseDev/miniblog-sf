@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+
+
+
+
+{% block body %}
+{%include('components/_partials/header.html.twig')%}
+   <main class="max-w-screen-lg mx-auto py-5 md:py-16 px-4">
+   <ul class="flex gap-2 text-violet-950 mb-4 text-sm">
+                <li class="after:content-['>']">
+                    <a href="{{ path('app_home') }}">Home</a>
+                </li>
+  
+                <li class="text-violet-600">
+                    Tous les articles
+                </li>
+            </ul>
+<div class="container-fluid my-4">
+    <section class="max-w-screen mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+
+    <article class="flex flex-col gap-4 md:col-span-2">
+
+        <h1 class="text-3xl font-bold text-black-900">{{ article.title }}</h1>
+        <p class="text-slate-600 text-sm mb-4">{{ article.content }}</p>
+        <p class="text-slate-600 text-sm mb-4">
+            {# Published {{ article.createdAt}} ago. #}
+        </p>
+
+    </section>
+    <div class="max-w-screen-lg mx-auto px-4 pb-6 md:pb-16">
+        {{ include('components/cta-purchase.html.twig') }}
+    </div>
+</div>
+</main>
+{% endblock %}
