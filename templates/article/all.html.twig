@@ -25,9 +25,9 @@
 							{{ ux_icon('mdi:star-outline', { 'class': 'h-4 w-4' }) }} Premium
 						</div>
 					{% endif %}
-					<h3 class="mb-1 text-xl-5 text-bold text-black-900">{{ item.title }}</h3>
+					<h3 class="mb-1 text-xl-5 text-bold text-black-900">{{ item.title | capitalize }}</h3>
 					<p class="text-slate-600 mb-2 text-sm">{{ item.content|slice(0,100) }}...</p>
-					<div class="flex justify-between">		
+					<div class="flex justify-between ">		
 						<a href="{{ path('app_article_show', {'id': item.id}) }}" class="bg-violet-100 rounded-md py-2 px-3 text-sm hover:bg-violet-200 self-end w-fit transition-all duration-200 ease-in-out">
 							Lire la suite
 						</a>

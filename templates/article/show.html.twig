@@ -1,47 +1,48 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ article.title }}
+	{{ article.title }}
 {% endblock %}
-
-
-
 
 
 {% block body %}
-{%include('components/_partials/header.html.twig')%}
-   <main class="max-w-screen-lg mx-auto py-5 md:py-16 px-4">
-   <ul class="flex gap-2 text-violet-950 mb-4 text-sm">
-                <li class="after:content-['>']">
-                    <a href="{{ path('app_home') }}">Home</a>
-                </li>
-                <li class="after:content-['>']">
-                    <a href="{{ path('app_articles_all') }}">Tous les articles</a>
-                </li>
-  
-                <li class="text-violet-600">
-                    {{ article.title}}
-                </li>
-            </ul>
-<div class="container-fluid my-4">
-    <section class="max-w-screen mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+	{%include('components/_partials/header.html.twig')%}
+	<main class="max-w-screen-lg mx-auto py-5 md:py-16 px-4">
+		<ul class="flex gap-2 text-violet-950 mb-4 text-sm">
+			<li class="after:content-['>']">
+				<a href="{{ path('app_home') }}">Home</a>
+			</li>
+			<li class="after:content-['>']">
+				<a href="{{ path('app_articles_all') }}">Tous les articles</a>
+			</li>
 
-    <article class="flex flex-col gap-4 md:col-span-2">
+			<li class="text-violet-600">
+				{{ article.title}}
+			</li>
+		</ul>
+		<div class="container-fluid my-4">
+			<section class="max-w-screen mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-4">
 
-        <h1 class="text-3xl font-bold text-black-900">{{ article.title }}</h1>
-        {% if article.isPremium %}
-        <p class="text-slate-600 text-sm mb-4 fade">{{ article.content | slice(0, 200) }}</p>
-        {% else  %}
-            <p class="text-slate-600 text-sm mb-4">{{ article.content }}</p>
-        {% endif %}
-        <p class="text-slate-600 text-sm mb-4">
-            {# Published {{ article.createdAt}} ago. #}
-        </p>
+				<article class="flex flex-col gap-4 md:col-span-2">
 
-    </section>
-    <div class="max-w-screen-lg mx-auto px-4 pb-6 md:pb-16">
-        {{ include('components/cta-purchase.html.twig') }}
-    </div>
-</div>
-</main>
-{% endblock %}
+					<h1 class="text-3xl font-bold text-black-900">{{ article.title | capitalize }}</h1>
+					{% if article.isPremium %}
+							<div class="container-text text-slate-600 text-sm mb-4 ">
+								<p class="">{{ article.content | slice(0, 550) }}</p>
+								<div class="container-text-fade w-full h-full l-0 t-0"></div>
+							</div>
+                            <div class="container-w-full h-full l-0 t-0 text-indigo-400">Vous ne pouvez lire la suite de l'article, car il est réservé aux membres premium</div>
+					{% else  %}
+						<p class="text-slate-600 text-sm mb-4">{{ article.content }}</p>
+					{% endif %}
+					<p
+						class="text-slate-600 text-sm mb-4">{# Published {{ article.createdAt}} ago. #}
+					</p>
+
+				</section>
+				<div class="max-w-screen-lg mx-auto px-4 pb-6 md:pb-16">
+					{{ include('components/cta-purchase.html.twig') }}
+				</div>
+			</div>
+		</main>
+	{% endblock %}

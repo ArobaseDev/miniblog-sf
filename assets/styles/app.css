@@ -26,3 +26,20 @@ h4 {
 h5 {
     @apply text-lg;
 }
+
+.container-text-test {
+    position: relative;
+    width: 100%;
+}
+
+.container-text {
+    position: relative;
+    width: 100%;
+}
+
+.container-text-fade {
+    background: linear-gradient(rgba(255, 255, 255, 0), #fff);
+    position: absolute;
+    top: -1px;
+
+}
